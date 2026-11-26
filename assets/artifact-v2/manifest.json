@@ -1,0 +1,316 @@
+{
+  "version": "2.0",
+  "sourceBranch": "main",
+  "sourceCommit": "52a9f54ea681fa035b69862619edbaac5b3a852f",
+  "palette": {
+    "lacquer": "#641524",
+    "gold": "#e8bd72",
+    "jade": "#477e72",
+    "paper": "#f3d9ab",
+    "ink": "#220c20"
+  },
+  "assets": [
+    {
+      "file": "silk-brocade.svg",
+      "group": "Background",
+      "width": 320,
+      "height": 320,
+      "description": "Red silk brocade tile",
+      "sha256": "ca21769cbaa93639b389f5c5ad181be4ca29a511100a5f5dd718d6400164b01e"
+    },
+    {
+      "file": "cloud-wave-tile.svg",
+      "group": "Background",
+      "width": 320,
+      "height": 160,
+      "description": "Jade auspicious cloud repeat",
+      "sha256": "b1c54ce56a092cf8df4cf7842a397a3a5ca4208836a735a9c2bb9bb8e5100a21"
+    },
+    {
+      "file": "paper-parchment.svg",
+      "group": "Background",
+      "width": 640,
+      "height": 440,
+      "description": "Warm rice paper with gold corners",
+      "sha256": "82d97f1fec504476cfa1e3beccc248c4497ecb08dd9f3c61472b5cc62518d263"
+    },
+    {
+      "file": "moon-halo.svg",
+      "group": "Scenery",
+      "width": 320,
+      "height": 320,
+      "description": "Luminous full moon",
+      "sha256": "9c812bc6bb461d746c6f5fe9ba709791d14dabcbcc0f8f46b34e06c3855b48a9"
+    },
+    {
+      "file": "mountains-far.svg",
+      "group": "Scenery",
+      "width": 1200,
+      "height": 360,
+      "description": "Layered distant ink mountains",
+      "sha256": "f8847ad84b55074205e6a37ba44d4eeee787cbcd5df80c3985ef06457bc3421b"
+    },
+    {
+      "file": "mountains-near.svg",
+      "group": "Scenery",
+      "width": 1200,
+      "height": 360,
+      "description": "Near jade landscape",
+      "sha256": "5c4d192220705e85436f84be1e0b14ea998660627341957c8f31aaa4e3e8ef85"
+    },
+    {
+      "file": "palace.svg",
+      "group": "Scenery",
+      "width": 1000,
+      "height": 460,
+      "description": "Imperial wedding palace",
+      "sha256": "0304562cb1a4f5932af96df7edc7c13c6c52d3c731edd2cc312c583b8491487e"
+    },
+    {
+      "file": "water-reflections.svg",
+      "group": "Scenery",
+      "width": 1200,
+      "height": 280,
+      "description": "Jade lake reflections",
+      "sha256": "32825dc98b76ed69b1ee9feff7cc89fe00aef985baa84ce4065330968402ecd1"
+    },
+    {
+      "file": "auspicious-cloud.svg",
+      "group": "Scenery",
+      "width": 200,
+      "height": 88,
+      "description": "Gold ruyi cloud",
+      "sha256": "f40b0facdd2317805a42218f209cb73aef808c1461796029ccaac465199671d3"
+    },
+    {
+      "file": "lotus.svg",
+      "group": "Florals",
+      "width": 320,
+      "height": 220,
+      "description": "Layered red and ivory lotus",
+      "sha256": "f42cd0886ea4ace1bea19faeeedaac97e6d5a69d9d4b41a9f672651724fad969"
+    },
+    {
+      "file": "peony.svg",
+      "group": "Florals",
+      "width": 256,
+      "height": 256,
+      "description": "Gold-edged red peony",
+      "sha256": "2631c7cb1088556eebf80173e2d708c461932603bcd4efcb0279c16f83bfece3"
+    },
+    {
+      "file": "plum-branch.svg",
+      "group": "Florals",
+      "width": 420,
+      "height": 280,
+      "description": "Plum blossoms on a gold branch",
+      "sha256": "1f55b636a1e8d8a62f3c6e81e0e510c71d145eb9f23fdf0a9e50d4cf495d7602"
+    },
+    {
+      "file": "falling-petal.svg",
+      "group": "Florals",
+      "width": 96,
+      "height": 96,
+      "description": "Floating silk petal",
+      "sha256": "c744dff2257a860ff7396436297e787e904c041d37d031ab452e69cd0c53e94d"
+    },
+    {
+      "file": "lantern.svg",
+      "group": "Ceremony",
+      "width": 200,
+      "height": 320,
+      "description": "Gold-ribbed wedding lantern",
+      "sha256": "a53da75626e1763c1686bcef4de3749d7573aa5352c3172334012dce3dd17a76"
+    },
+    {
+      "file": "silk-curtain.svg",
+      "group": "Ceremony",
+      "width": 520,
+      "height": 900,
+      "description": "Draped wedding curtain, mirror for right side",
+      "sha256": "7740a088edff7eeac8103acb8bb21b019cfe50cd39dfb2d649b8c504b68d2159"
+    },
+    {
+      "file": "curtain-valance.svg",
+      "group": "Ceremony",
+      "width": 1200,
+      "height": 230,
+      "description": "Scalloped gold-trimmed curtain valance",
+      "sha256": "af2dc1227eccb011026a22cee02695d0fd82cd1659c219232b6e9ebed827bde0"
+    },
+    {
+      "file": "double-happiness-seal.svg",
+      "group": "Identity",
+      "width": 256,
+      "height": 256,
+      "description": "Double happiness medallion",
+      "sha256": "2f87a3aa10f52d4c868776171031484fda2e4af6fdfe915e1b774453f57cbe5d"
+    },
+    {
+      "file": "monogram.svg",
+      "group": "Identity",
+      "width": 360,
+      "height": 280,
+      "description": "TP HN monogram",
+      "sha256": "121fdf9e9450cbed34f289ce54fd3be3e1e07de25feabe2d7e4cd44da9d5ac6a"
+    },
+    {
+      "file": "ornate-corner.svg",
+      "group": "Frames",
+      "width": 128,
+      "height": 128,
+      "description": "Gold ornamental corner",
+      "sha256": "5beb869ccb24590203aa45cbd9e587bb86e880db82b0762693fd4f157b354e0a"
+    },
+    {
+      "file": "scroll-divider.svg",
+      "group": "Frames",
+      "width": 620,
+      "height": 90,
+      "description": "Auspicious section divider",
+      "sha256": "3e93907cc829ac9e155c976742ccdc46927bc1f180d4c6be9e0d18857785540a"
+    },
+    {
+      "file": "portrait-frame.svg",
+      "group": "Frames",
+      "width": 480,
+      "height": 640,
+      "description": "Transparent portrait overlay frame",
+      "sha256": "16a2686be49ab583da7c7e7c5de30ebbd14f649a5d94c3b64f9da5ed594eec85"
+    },
+    {
+      "file": "invitation-envelope.svg",
+      "group": "Stationery",
+      "width": 600,
+      "height": 420,
+      "description": "Red invitation envelope with seal",
+      "sha256": "a4e9c743110918c92881c11340ffbd01c46a606c8d7f070a88abd63d3e68cffb"
+    },
+    {
+      "file": "folding-fan.svg",
+      "group": "Stationery",
+      "width": 420,
+      "height": 280,
+      "description": "Traditional gold folding fan",
+      "sha256": "fca9e587180aa5ba242031bc7a37d75550152322f08f961c5d1d66349f02f40a"
+    },
+    {
+      "file": "gold-ring-pair.svg",
+      "group": "Ceremony",
+      "width": 320,
+      "height": 220,
+      "description": "Wedding gold rings",
+      "sha256": "35d89154ec0e466a35e29747be1ed863df5963fa56192ad89d2f1acb42f94cad"
+    },
+    {
+      "file": "dragon-emblem.svg",
+      "group": "Mythic",
+      "width": 520,
+      "height": 420,
+      "description": "Original stylized coiled dragon vector",
+      "sha256": "fb22c06ab3052e10f1338cfd3f2949048c15b620ae2c6601cf2d7875fdb455b7"
+    },
+    {
+      "file": "phoenix-emblem.svg",
+      "group": "Mythic",
+      "width": 520,
+      "height": 420,
+      "description": "Original stylized phoenix vector",
+      "sha256": "1825acccb2b381515d9644ec51e554bcce6e55054e770bd4bc68ab32f31a1749"
+    },
+    {
+      "file": "celestial-horse-emblem.svg",
+      "group": "Mythic",
+      "width": 520,
+      "height": 420,
+      "description": "Original celestial horse / longma-inspired emblem",
+      "sha256": "4e7e20a220a8c8aaaa5e5b9037cff946b3a835a367a4d32231e3350ab8d37579"
+    },
+    {
+      "file": "map-pin.svg",
+      "group": "Icons",
+      "width": 96,
+      "height": 128,
+      "description": "Wedding venue marker",
+      "sha256": "c4974325b57ef9936a25155b87522745de8bd707cc2733dc2ce880d87588351f"
+    },
+    {
+      "file": "music-medallion.svg",
+      "group": "Icons",
+      "width": 96,
+      "height": 96,
+      "description": "Music control medallion",
+      "sha256": "fffc8c7c749d16fa8a6d2db8f7eabc54057c1f05ff751451f101dccb428b1a81"
+    },
+    {
+      "file": "sparkle.svg",
+      "group": "Effects",
+      "width": 80,
+      "height": 80,
+      "description": "Golden four-point sparkle",
+      "sha256": "25718daa3d3485c2c43e470edf67e9e29a142f5e095829db1db144836604675e"
+    },
+    {
+      "file": "lantern-floating.svg",
+      "group": "Effects",
+      "width": 160,
+      "height": 100,
+      "description": "Floating wish lantern",
+      "sha256": "916935465c81964de57c7e27679cb2cc0f8d1003dded22839e8f8487c3043ca2"
+    },
+    {
+      "file": "hero-landscape.svg",
+      "group": "Composition",
+      "width": 1440,
+      "height": 900,
+      "description": "Cinematic moonlit palace hero backdrop",
+      "sha256": "953a39796a688367ee3f28dbb6153c647a3cca667675ed5a00f6e9b019cd7c5e"
+    },
+    {
+      "file": "invitation-cover.svg",
+      "group": "Composition",
+      "width": 720,
+      "height": 1000,
+      "description": "Wedding invitation cover, original source date",
+      "sha256": "9b5db2a202f155837aebe7546bb0a1f1fbf31b99e9d9f7e0cbabaeab3dc947ad"
+    }
+  ],
+  "originals": [
+    {
+      "file": "assets/images/couple-main.png",
+      "bytes": 2403111,
+      "sha256": "4fc244745e89ce0a7daba2a9b9003e365528fe1392504638ab1339a4dd8594ab",
+      "status": "preserved original; not regenerated"
+    },
+    {
+      "file": "assets/images/dragon.png",
+      "bytes": 1412905,
+      "sha256": "48eb8b15ba69250fc0e833f56e698eaf03b0659e11f1870f8e12b2685e6f8bce",
+      "status": "preserved original; not regenerated"
+    },
+    {
+      "file": "assets/images/phoenix.png",
+      "bytes": 1549362,
+      "sha256": "20100f9d9ad45208f38c6312fbcecbae93fb14388566c6e5dae64199b22f2261",
+      "status": "preserved original; not regenerated"
+    },
+    {
+      "file": "assets/images/longma.png",
+      "bytes": 1764987,
+      "sha256": "fcbf447cea0fcc6dd38221ada7377e591266f388d0976235d45b8862501ed106",
+      "status": "preserved original; not regenerated"
+    },
+    {
+      "file": "assets/music/wedding-song.mp3",
+      "bytes": 5898530,
+      "sha256": "d5100aac7edb96b0ff38a967ed603a1d1e569347a18670c349d5862b8d60de4f",
+      "status": "preserved original; not regenerated"
+    }
+  ],
+  "notes": [
+    "All SVG artwork authored as deterministic vectors; no external image service.",
+    "Original photo, raster creatures and audio are untouched.",
+    "Source date copied without verification.",
+    "SVG text relies on installed CJK fonts; preview uses system fallbacks."
+  ]
+}
