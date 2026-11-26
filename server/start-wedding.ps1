@@ -7,5 +7,7 @@ $env:WEDDING_ADMIN_TOKEN=[IO.File]::ReadAllText($tokenFile).Trim()
 $env:WEDDING_HOST='127.0.0.1'
 $env:WEDDING_PORT=[string]$Port
 $env:WEDDING_PUBLIC_ORIGIN=$PublicOrigin
+$inviteFile=Join-Path $DataDir 'invite-code.txt'
+if($PublicOrigin){if(!(Test-Path -LiteralPath $inviteFile)){throw 'Provision invitation code before public routing'};$env:WEDDING_INVITE_CODE=[IO.File]::ReadAllText($inviteFile).Trim()}else{$env:WEDDING_INVITE_CODE=''}
 & $NodeExe (Join-Path $PSScriptRoot 'wedding-server.cjs')
 exit $LASTEXITCODE
