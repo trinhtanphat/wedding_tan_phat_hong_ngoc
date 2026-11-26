@@ -1,0 +1,3 @@
+const fs=require('node:fs'),p=require('node:path'),d=p.resolve(__dirname,'..','demo');
+const file=p.join(d,'index.html');let h=fs.readFileSync(file,'utf8');h=h.replace('Hỷ sự V4','Hỷ sự V5').replace('Wedding Cinematic V4 · Demo thiết kế','Wedding Cinematic V5 · Demo thiết kế').replace('<script src="enhancements.js"></script>','<script src="enhancements.js"></script><script src="rsvp.js"></script>');fs.writeFileSync(file,h);
+const js=p.join(d,'wedding.js');let s=fs.readFileSync(js,'utf8');const a="e.preventDefault();const name=$('guest')";if(!s.includes(a))throw Error('local submit anchor missing');s=s.replace(a,"e.preventDefault();if(document.documentElement.dataset.rsvpMode==='server')return;const name=$('guest')");fs.writeFileSync(js,s);

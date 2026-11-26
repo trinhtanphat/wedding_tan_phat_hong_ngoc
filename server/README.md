@@ -1,0 +1,9 @@
+# Wedding V5 RSVP server
+
+Requires Node.js 24 with node:sqlite. Binds to loopback only, default 18763. GitHub Pages remains a static, local-only demo; no data from Pages is silently sent to this server. A trusted HTTPS reverse proxy with a dedicated hostname may forward to this listener; set WEDDING_PUBLIC_ORIGIN to the exact HTTPS hostname.
+
+Use a dedicated absolute data directory outside the source tree. Provision an administrator token with at least 32 random characters, protect the directory using OS ACLs, and never commit the token or database. On Windows run start-wedding.ps1 with -DataDir and -NodeExe, optionally -Port and -PublicOrigin. Admin export: GET /api/wedding/admin/export with Authorization: Bearer <token>; do not put the token in query strings or public logs. Back up the SQLite database with a SQLite-aware online backup or while this dedicated service is stopped. Do not copy only the main file while WAL writes are active.
+
+Public GET status discloses readiness only. POST RSVP uses bounded JSON, origin checks, validation, a UUID idempotency key, a global in-memory rate limit and durable SQLite storage. No public RSVP read endpoint. Names and wishes are personal data: restrict export, obtain consent, and define retention/deletion before accepting real guests. Global rate limiting is basic abuse protection; add edge rate limits before internet exposure. The demo date and venue remain unverified. No authentication or cookies for guest submission; admin token is separate and must remain secret.
+
+QA: node tools/test-wedding-v5.cjs; node tools/test-wedding-server-browser.cjs; node tools/test-wedding-v4.cjs. All use isolated temporary data or browser profiles. Deploy immutable GitHub commit to a separate release directory. Rollback by switching only this service to a previously verified release; retain data directory, do not restart unrelated tunnels/services.

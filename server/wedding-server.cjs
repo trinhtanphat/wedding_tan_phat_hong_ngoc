@@ -1,0 +1,41 @@
+'use strict';
+const http=require('node:http'),fs=require('node:fs'),path=require('node:path'),crypto=require('node:crypto'),{DatabaseSync}=require('node:sqlite');
+const root=path.resolve(__dirname,'..'),data=process.env.WEDDING_DATA_DIR,token=process.env.WEDDING_ADMIN_TOKEN||'',host=process.env.WEDDING_HOST||'127.0.0.1',port=Number(process.env.WEDDING_PORT||18763),origin=process.env.WEDDING_PUBLIC_ORIGIN||'';
+if(!data||!path.isAbsolute(data)||path.resolve(data).toLowerCase().startsWith(root.toLowerCase()+path.sep)||path.resolve(data)===root)throw Error('Set absolute WEDDING_DATA_DIR outside repo');
+if(token.length<32)throw Error('WEDDING_ADMIN_TOKEN must be at least 32 characters');
+if(host!=='127.0.0.1')throw Error('Loopback only; use isolated reverse proxy');
+if(origin&&(!/^https:\/\/[a-z0-9.-]+$/i.test(origin)))throw Error('Invalid HTTPS public origin');
+fs.mkdirSync(data,{recursive:true});const db=new DatabaseSync(path.join(data,'rsvp.sqlite'));db.exec("PRAGMA journal_mode=WAL; PRAGMA synchronous=FULL; PRAGMA busy_timeout=5000; CREATE TABLE IF NOT EXISTS rsvp(id TEXT PRIMARY KEY, name TEXT NOT NULL, message TEXT NOT NULL, attendance TEXT NOT NULL CHECK(attendance IN ('yes','no','maybe')), guests INTEGER NOT NULL CHECK(guests BETWEEN 0 AND 4), created_at TEXT NOT NULL, payload_hash TEXT NOT NULL);");
+const insert=db.prepare('INSERT INTO rsvp VALUES(?,?,?,?,?,?,?) ON CONFLICT(id) DO NOTHING'),lookup=db.prepare('SELECT payload_hash FROM rsvp WHERE id=?'),rows=db.prepare('SELECT id,name,message,attendance,guests,created_at FROM rsvp ORDER BY created_at DESC,id DESC LIMIT 10000'),count=db.prepare('SELECT count(*) AS total FROM rsvp');
+const mime={'.html':'text/html; charset=utf-8','.css':'text/css; charset=utf-8','.js':'text/javascript; charset=utf-8','.svg':'image/svg+xml','.png':'image/png','.jpg':'image/jpeg','.jpeg':'image/jpeg','.webp':'image/webp','.mp3':'audio/mpeg','.json':'application/json; charset=utf-8'};
+const headers={'X-Content-Type-Options':'nosniff','Referrer-Policy':'no-referrer','X-Frame-Options':'DENY','Permissions-Policy':'camera=(), microphone=(), geolocation=()','Content-Security-Policy':"default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data:; media-src 'self'; connect-src 'self'; frame-ancestors 'none'; base-uri 'none'; form-action 'self'","X-Robots-Tag":"noindex, nofollow"};
+function respond(res,status,payload,extra={}){res.writeHead(status,{...headers,'Content-Type':'application/json; charset=utf-8','Cache-Control':'no-store',...extra});res.end(JSON.stringify(payload))}
+function authorized(req){const expected=Buffer.from('Bearer '+token),actual=Buffer.from(req.headers.authorization||'');return expected.length===actual.length&&crypto.timingSafeEqual(expected,actual)}
+const allowedOrigins=new Set(['http://127.0.0.1:'+port]);if(origin)allowedOrigins.add(origin);
+let windowStart=Date.now(),attempts=0;function budget(){if(Date.now()-windowStart>=60000){windowStart=Date.now();attempts=0}return ++attempts<=120}
+async function body(req){let n=0,parts=[];for await(const b of req){n+=b.length;if(n>8192)throw Object.assign(Error('body too large'),{status:413});parts.push(b)}try{return JSON.parse(Buffer.concat(parts).toString('utf8'))}catch{throw Object.assign(Error('invalid JSON'),{status:400})}}
+function valid(x){if(!x||typeof x!=='object'||!(/^[0-9a-f]{8}-[0-9a-f]{4}-4[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/i.test(x.id||''))||typeof x.name!=='string'||typeof x.message!=='string'||!['yes','no','maybe'].includes(x.attendance)||!Number.isInteger(x.guests))return null;const name=x.name.trim(),message=x.message.trim();if(!name||name.length>80||!message||message.length>500||/[\x00-\x08\x0b\x0c\x0e-\x1f]/.test(name+message)||x.guests<0||x.guests>4||(x.attendance==='no'?x.guests!==0:x.guests<1))return null;return {id:x.id,name,message,attendance:x.attendance,guests:x.guests}}
+function filePath(url){if(url==='/')return 'demo/index.html';if(url==='/demo/')return 'demo/index.html';if(url==='/assets/artifact-v2/')return 'assets/artifact-v2/index.html';const v=url.slice(1);if(/^demo\/(?:index\.html|wedding\.css|wedding\.js|enhancements\.css|enhancements\.js|rsvp\.js|v5\.css)$/.test(v)||/^assets\/(?:artifact-v2|images|music)\/[a-zA-Z0-9_.-]+\.(?:svg|png|jpg|jpeg|webp|mp3|html|css|json)$/.test(v))return v;return null}
+const server=http.createServer(async(req,res)=>{try{
+const u=new URL(req.url,'http://localhost'),route=u.pathname;
+if(route==='/api/wedding/status'&&req.method==='GET')return respond(res,200,{ready:true,mode:'server',version:'5'});
+if(route==='/api/wedding/rsvp'&&req.method==='POST'){
+if(!allowedOrigins.has(req.headers.origin))return respond(res,403,{error:'origin denied'});
+if(!/^application\/json(?:;|$)/i.test(req.headers['content-type']||''))return respond(res,415,{error:'JSON required'});
+if(!budget())return respond(res,429,{error:'try again later'},{'Retry-After':'60'});
+const x=valid(await body(req));if(!x)return respond(res,400,{error:'invalid submission'});
+const hash=crypto.createHash('sha256').update(JSON.stringify(x)).digest('hex');
+const prior=lookup.get(x.id);if(prior){if(prior.payload_hash!==hash)return respond(res,409,{error:'idempotency conflict'});return respond(res,200,{ok:true,id:x.id,replayed:true})}
+if(Number(count.get().total)>=10000)return respond(res,503,{error:'capacity reached'});
+insert.run(x.id,x.name,x.message,x.attendance,x.guests,new Date().toISOString(),hash);return respond(res,201,{ok:true,id:x.id});
+}
+if(route==='/api/wedding/admin/export'&&req.method==='GET'){if(!authorized(req))return respond(res,401,{error:'unauthorized'},{'WWW-Authenticate':'Bearer'});return respond(res,200,{records:rows.all()},{'Content-Disposition':'attachment; filename="wedding-rsvp.json"'})}
+if(route.startsWith('/api/'))return respond(res,404,{error:'not found'});
+if(!['GET','HEAD'].includes(req.method))return respond(res,405,{error:'method denied'});
+if(route==='/'){res.writeHead(302,{...headers,Location:'/demo/','Cache-Control':'no-store'});return res.end()}
+const rel=filePath(route);if(!rel)return respond(res,404,{error:'not found'});
+const f=path.resolve(root,rel);if(!f.startsWith(root+path.sep)||!fs.existsSync(f)||!fs.statSync(f).isFile())return respond(res,404,{error:'not found'});
+let bytes=fs.readFileSync(f);if(rel==='demo/index.html')bytes=Buffer.from(bytes.toString('utf8').replace('<html lang="vi">','<html lang="vi" data-rsvp-mode="server">'));
+res.writeHead(200,{...headers,'Content-Type':mime[path.extname(f)]||'application/octet-stream','Cache-Control':'no-cache','Content-Length':bytes.length});res.end(req.method==='HEAD'?undefined:bytes);
+}catch(e){if(!res.headersSent)respond(res,e.status||500,{error:e.status?e.message:'internal error'});else res.end()}});
+server.requestTimeout=15000;server.headersTimeout=10000;server.listen(port,host,()=>console.log('Wedding V5 ready on '+host+':'+port));function stop(){server.close(()=>{db.close();process.exit(0)});setTimeout(()=>process.exit(1),5000).unref()}process.on('SIGTERM',stop);process.on('SIGINT',stop);
