@@ -1,0 +1,3 @@
+# V7.2 final demo
+
+17 existing verified WebP illustrations and original couple photo/music retained. Three new hand-authored SVG assets: lotus petal, lotus blossom, gold divider. The original legacy root page and V2 archive are retained for compatibility; the canonical premium demo is /demo/. No PNG master substitutes; issue #7 remains open. CSS-only decorative particles (16 desktop, 10 tablet, 8 small mobile), no pointer interception, disabled by reduced motion and motion toggle. Gallery collapses by default. RSVP schema and data unchanged; status version 7.2. QA: test-wedding-v72.cjs, test-wedding-v4.cjs, test-wedding-v5.cjs, test-wedding-v6.cjs, test-wedding-server-browser.cjs. Deploy verified main only, backup and rollback V7.1.
