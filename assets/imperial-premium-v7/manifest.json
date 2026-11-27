@@ -1,0 +1,162 @@
+{
+  "version": "premium-v7-web",
+  "sourceArchive": "wedding-imperial-premium-v7-full.zip",
+  "sourceArchiveSha256": "e5da262222515a4f3808bceae27c26fd4424c7ae745ff95f2537ae5fd377cf70",
+  "sourcePngCount": 10,
+  "sourcePngStatus": "retained in delivery archive; not in this web commit",
+  "files": [
+    {
+      "path": "web/den-long.webp",
+      "bytes": 447998,
+      "sha256": "d40db32b22741f31163a0e358499a0eb2bc5e78fcda6ab73b79848592fdb4a03",
+      "width": 900,
+      "height": 1200,
+      "mode": "RGBA",
+      "gitBlob": "d984a3105cdbd79999b33c0564ae8926013136f0"
+    },
+    {
+      "path": "web/khung-anh.webp",
+      "bytes": 419532,
+      "sha256": "d64b0c68d61bd7735a616339e176d016338bd7c78514fb98660b2645bd68b025",
+      "width": 960,
+      "height": 1200,
+      "mode": "RGBA",
+      "gitBlob": "b1ca264c6399d8e789c3e33585ee56d0e466432d"
+    },
+    {
+      "path": "web/lau-dai-trang.webp",
+      "bytes": 397538,
+      "sha256": "9acee8b540d2f3cff1985376e70e7102c93a77a00b55bfaa7c45c02b5f60a0d0",
+      "width": 960,
+      "height": 1200,
+      "mode": "RGB",
+      "gitBlob": "60b8cd7dd04ef4edecc25a1fe5616a1dd76c2121"
+    },
+    {
+      "path": "web/lua-gam.webp",
+      "bytes": 89952,
+      "sha256": "f565fcea47788167a8b84f9e328e8ae5431605408b5cca23cc7ceb2dba7d1be1",
+      "width": 615,
+      "height": 512,
+      "mode": "RGBA",
+      "gitBlob": "98d756704307ef9283dc5f868b821c4415497479"
+    },
+    {
+      "path": "web/mau-don.webp",
+      "bytes": 117742,
+      "sha256": "db172df38f6cbb8a271ff1bb9ee7235736a833f6a786b2a811db1a208f2d7ea1",
+      "width": 586,
+      "height": 563,
+      "mode": "RGBA",
+      "gitBlob": "3c2df7c76a4587701e77820173a2091165a83946"
+    },
+    {
+      "path": "web/may-vang.webp",
+      "bytes": 70208,
+      "sha256": "6b7a527db7e437d55f4cc807b8dd41b9c17f03f8462ad78f84d16848bb4af16b",
+      "width": 556,
+      "height": 481,
+      "mode": "RGBA",
+      "gitBlob": "ae475a71f01e33f5d2c5412e9ab1ddde5ee274cc"
+    },
+    {
+      "path": "web/ngoc-boi.webp",
+      "bytes": 92084,
+      "sha256": "fddd4e103233e5164b4e00ae599fcc824427ac7917daa29ef51194ae58498e72",
+      "width": 475,
+      "height": 560,
+      "mode": "RGBA",
+      "gitBlob": "0e74ec236cd1cd87e193048079e7f852477a12e7"
+    },
+    {
+      "path": "web/phuong-hoang.webp",
+      "bytes": 755960,
+      "sha256": "82e90bdda256b599515e8e4f6b340761f834f9ee3d11e09c7e4d12c64a7b09fd",
+      "width": 960,
+      "height": 1200,
+      "mode": "RGBA",
+      "gitBlob": "b95b6d7097d585e293741f705737a7b576d063c6"
+    },
+    {
+      "path": "web/quat-phuong.webp",
+      "bytes": 113016,
+      "sha256": "4b95bd5ae2078ce039dd24fdaec4b9842c9ab1dfaee2ed4216a6acd716a37b9d",
+      "width": 619,
+      "height": 521,
+      "mode": "RGBA",
+      "gitBlob": "af92b28338e6593b75f771f53589661f93cdb162"
+    },
+    {
+      "path": "web/rem-cung-dinh.webp",
+      "bytes": 487270,
+      "sha256": "33701fb6aeaeceabe1c85db103522f7ec75cdd34c11173a7f8add88008f9a378",
+      "width": 960,
+      "height": 1200,
+      "mode": "RGBA",
+      "gitBlob": "45b11ca6f77da5a0f357d214c71ef71aab3f2908"
+    },
+    {
+      "path": "web/rong-vang.webp",
+      "bytes": 796252,
+      "sha256": "8ad61c7599919d49cef14bdf6bbf9d6150f652650b700501f0804e910ded71be",
+      "width": 960,
+      "height": 1200,
+      "mode": "RGBA",
+      "gitBlob": "44ebafd39a927e4ad63a98a2debaaec57bbc8de0"
+    },
+    {
+      "path": "web/san-cung-dinh-a.webp",
+      "bytes": 243972,
+      "sha256": "709c137b4f9c196446f4378616f844c7e5c0044244c2d9750d18a8bfd20dccaa",
+      "width": 1672,
+      "height": 469,
+      "mode": "RGB",
+      "gitBlob": "3a39d57a99ac058aa0a17ed498cca4c56150257b"
+    },
+    {
+      "path": "web/san-cung-dinh-b.webp",
+      "bytes": 252666,
+      "sha256": "8553b413ca9c925426b544d305f44114ae853ae060cb4af5f852ff4fa35083e5",
+      "width": 1672,
+      "height": 464,
+      "mode": "RGB",
+      "gitBlob": "5945bd9729b4281aa2a34593463859a041795b51"
+    },
+    {
+      "path": "web/song-hy.webp",
+      "bytes": 625456,
+      "sha256": "4a0fb4826567509455e41788ead4f61b619a43acb5fde6443348b23a523aa5df",
+      "width": 1200,
+      "height": 1200,
+      "mode": "RGBA",
+      "gitBlob": "71fc45d5e5f651414b7bd57f465f44e742105dfd"
+    },
+    {
+      "path": "web/thiep-hy-a.webp",
+      "bytes": 221674,
+      "sha256": "d6b8c4c64e4db42768659fb7fd2649a6713150b90c9de2f5ab0513e5377c2fa5",
+      "width": 1672,
+      "height": 470,
+      "mode": "RGB",
+      "gitBlob": "0674d9b339bf2b1bdf68da8ee364ad0310eab77e"
+    },
+    {
+      "path": "web/thiep-hy-b.webp",
+      "bytes": 247392,
+      "sha256": "74e2d803817777de566a3375e51e3a438d90be6075752d15d2a447baae67d0a1",
+      "width": 1672,
+      "height": 470,
+      "mode": "RGB",
+      "gitBlob": "756911e6467a1e359a5fb6aa3c6b000267851df2"
+    },
+    {
+      "path": "web/tram-hoa.webp",
+      "bytes": 89774,
+      "sha256": "5751332458fe5b6afdbf505d72eb7045ea547f7e68455347b0f00cad61ac2fd3",
+      "width": 683,
+      "height": 553,
+      "mode": "RGBA",
+      "gitBlob": "f64054aaf259080d3451bd294f5a75907af20072"
+    }
+  ]
+}
