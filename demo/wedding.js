@@ -2,7 +2,7 @@
 const $=id=>document.getElementById(id),curtain=$('curtain'),main=$('home'),audio=$('audio'),music=$('music'),reduced=matchMedia('(prefers-reduced-motion: reduce)');
 const nav=document.querySelector('.nav'),footer=document.querySelector('footer');
 main.inert=true;nav.inert=true;footer.inert=true;$('open').focus();
-function open(){if(curtain.hidden||curtain.classList.contains('opening'))return;curtain.classList.add('opening');setTimeout(()=>{curtain.hidden=true;main.inert=false;nav.inert=false;footer.inert=false;main.focus({preventScroll:true});},(reduced.matches||document.documentElement.classList.contains("motion-off"))?0:1350);}
+function open(){if(curtain.hidden||curtain.classList.contains('opening'))return;curtain.classList.add('opening');setTimeout(()=>{curtain.hidden=true;main.inert=false;nav.inert=false;footer.inert=false;document.querySelector(".skip").removeAttribute("tabindex");main.focus({preventScroll:true});},(reduced.matches||document.documentElement.classList.contains("motion-off"))?0:1350);}
 $('open').addEventListener('click',open);curtain.addEventListener('keydown',e=>{if(e.key==='Escape')open();if(e.key==='Tab'){e.preventDefault();$('open').focus()}});
 music.addEventListener('click',async()=>{if(audio.paused){try{await audio.play();music.setAttribute('aria-pressed','true')}catch{music.setAttribute('aria-pressed','false')}}else{audio.pause();music.setAttribute('aria-pressed','false')}});
 const lb=$('lightbox');$('photo').addEventListener('click',()=>lb.showModal());$('closePhoto').addEventListener('click',()=>lb.close());lb.addEventListener('click',e=>{if(e.target===lb)lb.close()});

@@ -1,0 +1,2 @@
+# V7.4 guest UX
+Preserve V7.3 artwork and particle behavior. Improve RSVP connection retry, clear invitation/rate-limit/validation messages, disable fields during submission, preserve values on failures, preserve idempotency across invite code corrections and ambiguous same-page retries. No browser persistence of invitation codes or guest drafts. Add desktop event navigation, accessible copy-link fallback and return-to-top. Actual wedding date/venue remain unconfirmed demo information. No database schema change.
