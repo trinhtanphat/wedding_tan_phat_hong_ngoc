@@ -26,3 +26,51 @@ body{background:#14090c}
 /* Keep equal halves on narrow displays; the full original arch is sampled once across both panels. */
 @media(max-width:800px){.curtain-left,.curtain-right{width:50%}}
 .motion-off .curtain-left,.motion-off .curtain-right,.motion-off .curtain-copy{transition:none!important}
+
+/* V7.2: final art direction; preserve original portrait and V7.1 curtain. */
+:root{--section-width:1120px;--gutter:clamp(18px,5vw,76px)}
+body{font-family:"Be Vietnam Pro",system-ui,sans-serif}
+.nav{padding-inline:var(--gutter);min-height:68px}.nav-controls button{min-height:44px}.brand{flex-shrink:0}
+.hero{padding:clamp(52px,7vh,90px) var(--gutter) 88px}
+.hero-inner{max-width:1200px;gap:clamp(24px,6vw,86px);position:relative;z-index:1}
+.hero-text{max-width:560px}.hero .lead{max-width:480px;line-height:1.85;color:#f8dfbd}.hero h1{line-height:1.13;letter-spacing:-.035em}
+.hero .date{margin:24px 0 28px}.portrait{width:min(100%,460px);margin:0 auto 24px}.portrait figcaption{bottom:-26px;line-height:1.5}
+.scene .dragon,.scene .phoenix{opacity:.34}.scene .dragon{left:-9%}.scene .phoenix{right:-9%}
+.section{padding:clamp(58px,7vw,100px) var(--gutter);border-top:1px solid #d0a45b26}
+.section>h2{max-width:900px;margin:0 auto 28px;line-height:1.18;letter-spacing:-.025em}
+.section>h2::after{content:"";display:block;width:min(240px,68%);height:24px;background:url('../assets/artifact-v2/ornament-divider-v72.svg') center/contain no-repeat;margin:15px auto 0}
+.section>.eyebrow,.section>.intro,.section>.notice{max-width:740px;margin-inline:auto}
+.paper{padding:clamp(28px,5vw,56px) clamp(22px,6vw,70px);max-width:720px;border-radius:2px;line-height:1.8}
+.paper-lotus{position:absolute;width:clamp(76px,14vw,144px);left:0;bottom:0;z-index:-1;opacity:.46;pointer-events:none}
+.paper-flower.right{display:block;width:24%;opacity:.21}
+.paper .families{gap:16px}.paper .divider{margin:12px auto}
+.chapters{max-width:var(--section-width);gap:clamp(12px,2vw,24px)}.chapters article{padding:clamp(15px,2vw,26px);min-width:0;border-top:2px solid #c89958}.chapters h3{line-height:1.3}.chapters p{line-height:1.65}
+.album-grid{max-width:1040px;gap:clamp(24px,5vw,66px)}.album-photo{padding:10px;border:1px solid #ba8b52;box-shadow:0 18px 40px #0803067a}.album-photo>img{object-fit:contain;background:#170b12}.album-copy{max-width:440px;margin:auto;min-width:0}.myths{align-items:center}
+.countdown{max-width:700px}.countdown b{font-variant-numeric:tabular-nums}.timeline{max-width:860px;gap:16px}
+.wishes form{max-width:580px;padding:clamp(16px,4vw,32px);border:1px solid #c69a605e;background:#210c13;box-shadow:0 14px 35px #09020550}.wishes input,.wishes textarea,.wishes select{min-height:46px;font-size:16px}.wishes .attendance input{min-height:0}.wishes [hidden]{display:none!important}.wishes .notice{margin-bottom:0}
+.event-actions{margin:24px auto 0}.event-actions:has(>button[hidden]):not(:has(>button:not([hidden]))){display:none}
+.premium-gallery{padding-block:52px}.asset-disclosure{max-width:var(--section-width);margin:auto;border:1px solid #b7884e66;background:#241018;padding:clamp(10px,2vw,20px)}.asset-disclosure summary{cursor:pointer;color:var(--gold);padding:12px;font-size:14px}.asset-disclosure[open] summary{margin-bottom:18px}.premium-grid{max-width:none}.premium-grid figure{min-width:0}.premium-grid figcaption{overflow-wrap:anywhere}
+footer{padding:44px var(--gutter) 52px}footer>img{width:78px}footer p{margin:8px 0}
+.lotus-rain{position:fixed;inset:0;z-index:12;overflow:hidden;pointer-events:none;contain:strict}
+.lotus-petal{position:absolute;top:-46px;left:var(--x);width:var(--s);height:calc(var(--s)*1.45);background:url('../assets/artifact-v2/lotus-petal-v72.svg') center/contain no-repeat;opacity:0;animation:lotus-fall var(--d) linear var(--delay) infinite;will-change:transform,opacity;filter:drop-shadow(0 2px 3px #1b071a55)}
+@keyframes lotus-fall{0%{transform:translate3d(0,-10px,0) rotate(-28deg) scale(.8);opacity:0}8%{opacity:var(--o)}45%{transform:translate3d(var(--drift),48vh,0) rotate(110deg) scale(1);opacity:var(--o)}90%{opacity:var(--o)}100%{transform:translate3d(calc(var(--drift)*-.55),calc(100vh + 65px),0) rotate(285deg) scale(.75);opacity:0}}
+body:has(.curtain:not([hidden]):not(.opening)) .lotus-rain{visibility:hidden}body:has(.curtain:not([hidden]):not(.opening)) .lotus-petal{animation-play-state:paused}
+.petal-1{--x:3%;--s:24px;--d:13s;--delay:-3s;--drift:40px;--o:0.65}
+.petal-2{--x:10%;--s:18px;--d:17s;--delay:-8s;--drift:-56px;--o:0.48}
+.petal-3{--x:18%;--s:21px;--d:15s;--delay:-5s;--drift:72px;--o:0.48}
+.petal-4{--x:25%;--s:16px;--d:20s;--delay:-11s;--drift:-88px;--o:0.65}
+.petal-5{--x:33%;--s:22px;--d:16s;--delay:-9s;--drift:40px;--o:0.48}
+.petal-6{--x:40%;--s:19px;--d:19s;--delay:-2s;--drift:-56px;--o:0.48}
+.petal-7{--x:49%;--s:24px;--d:14s;--delay:-12s;--drift:72px;--o:0.65}
+.petal-8{--x:57%;--s:17px;--d:18s;--delay:-6s;--drift:-88px;--o:0.48}
+.petal-9{--x:65%;--s:21px;--d:15s;--delay:-10s;--drift:40px;--o:0.48}
+.petal-10{--x:73%;--s:16px;--d:21s;--delay:-4s;--drift:-56px;--o:0.65}
+.petal-11{--x:81%;--s:23px;--d:16s;--delay:-13s;--drift:72px;--o:0.48}
+.petal-12{--x:89%;--s:19px;--d:18s;--delay:-7s;--drift:-88px;--o:0.48}
+.petal-13{--x:95%;--s:26px;--d:14s;--delay:-1s;--drift:40px;--o:0.65}
+.petal-14{--x:7%;--s:18px;--d:19s;--delay:-15s;--drift:-56px;--o:0.48}
+.petal-15{--x:85%;--s:22px;--d:17s;--delay:-11s;--drift:72px;--o:0.48}
+.petal-16{--x:51%;--s:15px;--d:20s;--delay:-14s;--drift:-88px;--o:0.65}
+@media(max-width:800px){.hero-inner{max-width:550px;gap:28px}.hero-text{margin:auto}.hero{padding:44px var(--gutter) 76px}.hero .date{margin:20px 0}.portrait{width:min(82vw,360px)}.scene .dragon,.scene .phoenix{opacity:.23}.section>h2{margin-bottom:23px}.chapters img{height:110px}.lotus-petal{width:calc(var(--s)*.78);height:calc(var(--s)*1.13)}.lotus-petal:nth-child(n+11){display:none}.premium-gallery{padding-block:40px}.premium-grid img{height:120px}.nav{padding-inline:12px}}
+@media(max-width:400px){.hero h1{font-size:clamp(35px,11vw,44px)}.hero .lead{font-size:14px}.curtain-copy{padding:20px 14px}.curtain-copy h1{font-size:clamp(27px,8vw,34px)}.curtain-copy>img{width:118px}.timeline{gap:8px}.timeline h3{font-size:15px}.paper .families{gap:8px}.chapters{gap:10px}.chapters article{padding:12px}.wishes form{padding:14px}.lotus-petal:nth-child(n+9){display:none}}
+@media(prefers-reduced-motion:reduce){.lotus-rain{display:none!important}}.motion-off .lotus-rain{display:none!important}
