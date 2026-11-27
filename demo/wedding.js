@@ -11,3 +11,30 @@ let pending=false;window.addEventListener('scroll',()=>{if(reduced.matches||docu
 const key='weddingDemoV3LocalWishes';let wishes=[];try{const v=JSON.parse(localStorage.getItem(key)||'[]');if(Array.isArray(v))wishes=v.filter(x=>typeof x.name==='string'&&typeof x.message==='string').slice(-20)}catch{}
 function render(){const list=$('wishList');list.replaceChildren();for(const item of wishes.slice().reverse()){const li=document.createElement('li'),b=document.createElement('b'),p=document.createElement('p');b.textContent=item.name;p.textContent=item.message;li.append(b,p);if(item.attendance){const meta=document.createElement('small');meta.textContent=({yes:'Sẽ tham dự',maybe:'Chưa chắc chắn',no:'Không thể tham dự'}[item.attendance]||'Chưa xác nhận')+(item.attendance==='no'?'':' · '+(item.guests||1)+' khách');li.append(meta)}list.append(li)}}render();
 $('wishForm').addEventListener('submit',e=>{e.preventDefault();if(document.documentElement.dataset.rsvpMode==='server')return;const name=$('guest').value.trim(),message=$('wish').value.trim();if(!name||!message)return;wishes.push({name,message,attendance:document.querySelector("input[name=attendance]:checked")?.value||"maybe",guests:document.querySelector("input[name=attendance]:checked")?.value==="no"?0:Number(document.getElementById("guests")?.value||1),createdAt:new Date().toISOString()});wishes=wishes.slice(-20);try{localStorage.setItem(key,JSON.stringify(wishes));$('status').textContent='Đã lưu lời chúc trên trình duyệt này.'}catch{$('status').textContent='Đã lưu trong phiên hiện tại; bộ nhớ trình duyệt không khả dụng.'}e.target.reset();document.getElementById("guests").disabled=false;render()});
+
+/* Original wedding particle effect, with bounded lifecycle and motion preference handling. */
+(()=>{
+ const layer=document.querySelector('.lotus-rain');if(!layer)return;
+ let started=false,timer=null;const pending=new Set(),root=document.documentElement;
+ const allowed=()=>started&&!reduced.matches&&!root.classList.contains('motion-off')&&!document.hidden;
+ const compact=()=>innerWidth<=800;
+ function createFallingItem(){
+  if(!allowed()||layer.childElementCount>=(compact()?56:96))return;
+  const item=document.createElement('span'),isPetal=Math.random()<.72;
+  item.className='fall-item '+(isPetal?'petal':'bubble');
+  if(isPetal&&Math.random()<.35)item.classList.add('alt');
+  item.style.left=Math.random()*100+'vw';item.style.opacity=.38+Math.random()*.42;
+  item.style.setProperty('--dx',(Math.random()-.5)*260+'px');
+  item.style.setProperty('--rot',(Math.random()>.5?1:-1)*(320+Math.random()*220)+'deg');
+  item.style.animationDuration=7+Math.random()*10+'s';
+  const size=isPetal?18+Math.random()*28:10+Math.random()*22;
+  item.style.width=size+'px';item.style.height=(isPetal?size*1.1:size)+'px';
+  layer.appendChild(item);item.addEventListener('animationend',()=>item.remove(),{once:true});
+ }
+ function burst(n){for(let i=0;i<n;i++){const t=setTimeout(()=>{pending.delete(t);createFallingItem()},i*36);pending.add(t)}}
+ function stop(){if(timer!==null){clearInterval(timer);timer=null}for(const t of pending)clearTimeout(t);pending.clear();layer.replaceChildren()}
+ function reconcile(){if(!allowed()){stop();return}if(timer!==null)return;burst(compact()?48:84);timer=setInterval(()=>burst(compact()?3:5),1200)}
+ new MutationObserver(()=>{if(!started&&(curtain.hidden||curtain.classList.contains('opening'))){started=true;reconcile()}}).observe(curtain,{attributes:true,attributeFilter:['class','hidden']});
+ new MutationObserver(reconcile).observe(root,{attributes:true,attributeFilter:['class']});
+ reduced.addEventListener('change',reconcile);document.addEventListener('visibilitychange',reconcile);
+})();

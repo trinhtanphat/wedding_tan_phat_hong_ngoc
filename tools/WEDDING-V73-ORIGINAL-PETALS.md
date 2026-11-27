@@ -1,0 +1,2 @@
+# V7.3
+Restore exact original pink and cream SVGs, bubble styling and fallDownPetal keyframe from root style.css; original random size/drift/rotation/duration from script.js. Desktop opening burst 84, 5 every 1.2s; mobile capped at 56, opening burst 48, 3 every 1.2s. Stop and clear on reduced motion, hidden document or motion toggle. Keep V7.2 layout and V7.1 curtain. Gallery uses original pink petal; legacy page untouched. Original artwork masters issue #7 unchanged.
