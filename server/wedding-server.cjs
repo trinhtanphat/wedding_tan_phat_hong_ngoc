@@ -18,7 +18,7 @@ function valid(x){if(!x||typeof x!=='object'||!(/^[0-9a-f]{8}-[0-9a-f]{4}-4[0-9a
 function filePath(url){if(url==='/')return 'demo/index.html';if(url==='/demo/')return 'demo/index.html';if(url==='/demo/premium-v7.css')return 'demo/premium-v7.css';if(/^\/assets\/imperial-premium-v7\/web\/[a-z0-9-]+\.webp$/.test(url))return url.slice(1);if(url==='/admin/')return 'server/admin/index.html';if(url==='/admin/admin.js')return 'server/admin/admin.js';if(url==='/admin/admin.css')return 'server/admin/admin.css';if(url==='/assets/artifact-v2/')return 'assets/artifact-v2/index.html';const v=url.slice(1);if(/^demo\/(?:index\.html|wedding\.css|wedding\.js|enhancements\.css|enhancements\.js|rsvp\.js|v5\.css|v6\.css|v6\.js)$/.test(v)||/^assets\/(?:artifact-v2|images|music)\/[a-zA-Z0-9_.-]+\.(?:svg|png|jpg|jpeg|webp|mp3|html|css|json)$/.test(v))return v;return null}
 const server=http.createServer(async(req,res)=>{try{
 const u=new URL(req.url,'http://localhost'),route=u.pathname;
-if(route==='/api/wedding/status'&&req.method==='GET')return respond(res,200,{ready:true,mode:'server',version:'7.2',inviteRequired:!!inviteCode});
+if(route==='/api/wedding/status'&&req.method==='GET')return respond(res,200,{ready:true,mode:'server',version:'7.3',inviteRequired:!!inviteCode});
 if(route==='/api/wedding/rsvp'&&req.method==='POST'){
 if(!allowedOrigins.has(req.headers.origin))return respond(res,403,{error:'origin denied'});
 if(!/^application\/json(?:;|$)/i.test(req.headers['content-type']||''))return respond(res,415,{error:'JSON required'});
