@@ -1,0 +1,87 @@
+{
+  "version": "premium-v7-source-manifest",
+  "sourceArchive": "wedding-imperial-premium-v7-full.zip",
+  "sourceArchiveSha256": "e5da262222515a4f3808bceae27c26fd4424c7ae745ff95f2537ae5fd377cf70",
+  "files": [
+    {
+      "path": "sources/bo-phu-kien.png",
+      "bytes": 2843233,
+      "sha256": "947a068525f6af40d70ea0487fb7e952786b8749168e1adea57ffcc939f452b5",
+      "width": 1536,
+      "height": 1024,
+      "mode": "RGBA"
+    },
+    {
+      "path": "sources/den-long.png",
+      "bytes": 2143873,
+      "sha256": "9561e933e011eb5186f3ebe675523f8b2078c6f94e1a64af8e2ad0d6c7627865",
+      "width": 1086,
+      "height": 1448,
+      "mode": "RGBA"
+    },
+    {
+      "path": "sources/khung-anh.png",
+      "bytes": 2166277,
+      "sha256": "0c6a707c2472a2c6ba2793bafb31e0f96f118909ac7e34c697bebcd8fe116043",
+      "width": 1122,
+      "height": 1402,
+      "mode": "RGBA"
+    },
+    {
+      "path": "sources/lau-dai-trang.png",
+      "bytes": 3302839,
+      "sha256": "ada305c33b55ffe6295e91d89c90eb064ba6aa0e15eb93874543e8e74b159c76",
+      "width": 1122,
+      "height": 1402,
+      "mode": "RGB"
+    },
+    {
+      "path": "sources/phoi-canh-a.png",
+      "bytes": 2971852,
+      "sha256": "e05debc1ba38cba4b9ba5e6f4ddd8047bbdc4cd519df367974322ef7ff1c68ac",
+      "width": 1672,
+      "height": 941,
+      "mode": "RGB"
+    },
+    {
+      "path": "sources/phoi-canh-b.png",
+      "bytes": 3105729,
+      "sha256": "398182b3181314d4a858636c4c4dbee5a709610f0dc312484019ee209fda9230",
+      "width": 1672,
+      "height": 941,
+      "mode": "RGB"
+    },
+    {
+      "path": "sources/phuong-hoang.png",
+      "bytes": 3256219,
+      "sha256": "531e24da8a46a8dcb6419119de85736d77f396bebdc247ba7955c4a1df4942fe",
+      "width": 1122,
+      "height": 1402,
+      "mode": "RGBA"
+    },
+    {
+      "path": "sources/rem-cung-dinh.png",
+      "bytes": 2748086,
+      "sha256": "ca562e011a896057000112b6d19752f3f0c11db94fff11c0a1a5fc534320d312",
+      "width": 1122,
+      "height": 1402,
+      "mode": "RGBA"
+    },
+    {
+      "path": "sources/rong-vang.png",
+      "bytes": 3278850,
+      "sha256": "1d18111fd011f5a5f4e9e77b653fb24efe2e46c5956c145bc49626591fa6e986",
+      "width": 1122,
+      "height": 1402,
+      "mode": "RGBA"
+    },
+    {
+      "path": "sources/song-hy.png",
+      "bytes": 2720509,
+      "sha256": "a672ec3bf3d448b5dc23aaa634d9cedd6aae17ed1b188a137646f57281b7fb1d",
+      "width": 1254,
+      "height": 1254,
+      "mode": "RGBA"
+    }
+  ]
+}
